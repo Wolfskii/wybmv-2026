@@ -2,6 +2,8 @@
 
 A little Svelte app to ask someone special.
 
+**Live:** [https://michelle.wolfskii.dev/](https://michelle.wolfskii.dev/)
+
 ![Two bears](img/please.gif)
 
 - **Run locally:** `npm install` then `npm run dev`
