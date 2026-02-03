@@ -10,15 +10,15 @@ A little Svelte app to ask someone special.
 
 ### Deploy to Dokploy
 
-Use the **Static** build type. In your Dokploy project (after connecting the GitHub repo), use these settings:
+Use **Build Type: Dockerfile** so the app is built inside the image (the repo’s `Dockerfile` runs `npm run build` then serves `dist/` with Nginx). If you used Static and see the default “Welcome to nginx!” page, switch to Dockerfile and redeploy.
 
 | Field | Value |
 |-------|--------|
-| **Build Path** | `dist` (folder to serve after build; the build runs from repo root) |
-| **Watch Paths** | `src/, public/, index.html, package.json, package-lock.json, vite.config.js, svelte.config.js` (or leave empty) |
+| **Build Path** | `/` |
+| **Watch Paths** | `src/, public/, index.html, package.json, package-lock.json, vite.config.js, svelte.config.js, Dockerfile` (or leave empty) |
 | **Enable Submodules** | No |
 | **Branch** | `main` |
-| **Build Type** | **Static** |
+| **Build Type** | **Dockerfile** |
 | **Single Page Application (SPA)** | Yes (tick) |
 | **Path** | `/` (serve at domain root) |
 | **Internal Path** | `/` (default) |
@@ -27,13 +27,7 @@ Use the **Static** build type. In your Dokploy project (after connecting the Git
 
 **Host:** Set your custom domain if you have one; otherwise leave the default.
 
-If Dokploy has a **Build Command** (or similar) field, set it to:
-
-```bash
-npm ci && npm run build
-```
-
-That produces the static files in `dist/`, which are then served by Nginx. Trigger a build in the Dokploy UI if it doesn’t start automatically.
+Trigger a build in the Dokploy UI after pushing. The Dockerfile builds the app and copies only the built `dist/` into the Nginx image, so you get the Valentine app, not the default Nginx page.
 
 ---
 
