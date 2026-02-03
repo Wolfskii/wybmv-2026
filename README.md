@@ -19,6 +19,9 @@ Use **Build Type: Dockerfile** so the app is built inside the image (the repo’
 | **Enable Submodules** | No |
 | **Branch** | `main` |
 | **Build Type** | **Dockerfile** |
+| **Docker File** | `Dockerfile` (path to Dockerfile, relative to repo root) |
+| **Docker Context Path** | `.` (repo root; default) |
+| **Docker Build Stage** | `production` (or leave empty — Docker uses the last stage) |
 | **Single Page Application (SPA)** | Yes (tick) |
 | **Path** | `/` (serve at domain root) |
 | **Internal Path** | `/` (default) |
